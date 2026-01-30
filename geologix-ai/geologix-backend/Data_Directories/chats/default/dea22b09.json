@@ -1,0 +1,24 @@
+{
+  "id": "dea22b09",
+  "title": "Good morning! How are you today?",
+  "folder_id": "default",
+  "created": "2026-01-30T09:59:15.211347",
+  "updated": "2026-01-30T09:59:16.401728",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Good morning! How are you today?",
+      "timestamp": "2026-01-30T09:59:15.277030"
+    },
+    {
+      "role": "assistant",
+      "content": "Good morning! I'm doing fantastically well, thanks for asking! It's great to start the day with a fresh conversation. As GeoLogix AI, I'm always ready to dive into any topic that interests you, whether it's exploring data patterns, discussing business insights, or simply chatting about current events. How about you? How's your morning going so far?",
+      "timestamp": "2026-01-30T09:59:16.401721"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

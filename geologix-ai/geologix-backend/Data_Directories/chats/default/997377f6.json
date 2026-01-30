@@ -1,0 +1,24 @@
+{
+  "id": "997377f6",
+  "title": "Good morning! How are you today?",
+  "folder_id": "default",
+  "created": "2026-01-30T09:58:23.485790",
+  "updated": "2026-01-30T09:58:25.155676",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Good morning! How are you today?",
+      "timestamp": "2026-01-30T09:58:23.530046"
+    },
+    {
+      "role": "assistant",
+      "content": "Good morning! I'm doing fantastic, thanks for asking! It's always a pleasure to start the day with a bright and inquisitive mind like yours. I'm here to help answer any questions or provide insights that might aid in your decision-making process or solve an intriguing problem.\n\nTo kick-start our conversation, how can I assist you today? Are you looking for some advice on optimizing mining operations, exploring new market trends, or perhaps uncovering hidden patterns in the data? Let me know, and we'll get this chat started!",
+      "timestamp": "2026-01-30T09:58:25.155666"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

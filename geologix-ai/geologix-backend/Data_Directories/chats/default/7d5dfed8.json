@@ -1,0 +1,24 @@
+{
+  "id": "7d5dfed8",
+  "title": "show me",
+  "folder_id": "default",
+  "created": "2026-01-30T10:37:07.867038",
+  "updated": "2026-01-30T10:37:07.946400",
+  "messages": [
+    {
+      "role": "user",
+      "content": "show me",
+      "timestamp": "2026-01-30T10:37:07.904640"
+    },
+    {
+      "role": "assistant",
+      "content": "I'd be happy to help! What type of data would you like to work with?\n\n**A**. Emails\n**B**. Documents/Files\n**C**. Archives\n**D**. All data sources\n\nPlease reply with A, B, C, or D, and I'll help you right away!",
+      "timestamp": "2026-01-30T10:37:07.946390"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

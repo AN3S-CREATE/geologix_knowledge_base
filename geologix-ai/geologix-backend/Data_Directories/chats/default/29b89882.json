@@ -1,0 +1,24 @@
+{
+  "id": "29b89882",
+  "title": "search for contract documents",
+  "folder_id": "default",
+  "created": "2026-01-30T10:14:26.350416",
+  "updated": "2026-01-30T10:14:26.459669",
+  "messages": [
+    {
+      "role": "user",
+      "content": "search for contract documents",
+      "timestamp": "2026-01-30T10:14:26.400408"
+    },
+    {
+      "role": "assistant",
+      "content": "No results found for 'for contract documents'. Try different search terms or check the index to see what's available.",
+      "timestamp": "2026-01-30T10:14:26.459660"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

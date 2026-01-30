@@ -1,0 +1,24 @@
+{
+  "id": "cba22844",
+  "title": "Show me production forecast for next quarter",
+  "folder_id": "default",
+  "created": "2026-01-30T09:58:43.064919",
+  "updated": "2026-01-30T09:58:43.272834",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Show me production forecast for next quarter",
+      "timestamp": "2026-01-30T09:58:43.175501"
+    },
+    {
+      "role": "assistant",
+      "content": "No results found for 'production forecast for next quarter'. Try different search terms.",
+      "timestamp": "2026-01-30T09:58:43.272824"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

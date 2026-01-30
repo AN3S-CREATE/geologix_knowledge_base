@@ -1,0 +1,24 @@
+{
+  "id": "ed25e0b5",
+  "title": "get that for me",
+  "folder_id": "default",
+  "created": "2026-01-30T10:32:22.816137",
+  "updated": "2026-01-30T10:32:22.898411",
+  "messages": [
+    {
+      "role": "user",
+      "content": "get that for me",
+      "timestamp": "2026-01-30T10:32:22.852634"
+    },
+    {
+      "role": "assistant",
+      "content": "I want to help, but I'm not sure what you're referring to. What would you like me to do?\n\n**A**. List all emails\n**B**. List all documents\n**C**. Search for something specific\n**D**. Analyze business data\n\nPlease reply with A, B, C, or D, and I'll help you right away!",
+      "timestamp": "2026-01-30T10:32:22.898402"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "f58f4fe0",
+  "title": "hello",
+  "folder_id": "default",
+  "created": "2026-01-30T11:15:57.742923",
+  "updated": "2026-01-30T11:15:57.888920",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hello",
+      "timestamp": "2026-01-30T11:15:57.776882"
+    },
+    {
+      "role": "assistant",
+      "content": "I'm here to help! Could you tell me more about what you're looking for?\n\n**A**. Search for specific information\n**B**. Get a list or overview\n**C**. Analyze data or create reports\n\nPlease reply with A, B, or C, or explain in your own words, and I'll help you right away!",
+      "timestamp": "2026-01-30T11:15:57.888908"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

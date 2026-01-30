@@ -1,0 +1,24 @@
+{
+  "id": "b0e656d0",
+  "title": "serch for buisness comunicaton improvment",
+  "folder_id": "default",
+  "created": "2026-01-30T10:43:30.627945",
+  "updated": "2026-01-30T10:43:30.727075",
+  "messages": [
+    {
+      "role": "user",
+      "content": "serch for buisness comunicaton improvment",
+      "timestamp": "2026-01-30T10:43:30.664789"
+    },
+    {
+      "role": "assistant",
+      "content": "No results found for 'serch for buisness comunicaton improvment'. Try different search terms or check the index to see what's available.",
+      "timestamp": "2026-01-30T10:43:30.727065"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

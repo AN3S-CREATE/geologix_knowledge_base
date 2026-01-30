@@ -1,0 +1,22 @@
+{
+  "default": {
+    "name": "General",
+    "created": "2026-01-28T21:02:58.105347"
+  },
+  "financial": {
+    "name": "Financial Analysis",
+    "created": "2026-01-28T21:02:58.105378"
+  },
+  "operations": {
+    "name": "Operations",
+    "created": "2026-01-28T21:02:58.105380"
+  },
+  "strategic": {
+    "name": "Strategic Planning",
+    "created": "2026-01-28T21:02:58.105383"
+  },
+  "finance": {
+    "name": "Finance",
+    "created": "2026-01-29T09:12:26.938427"
+  }
+}

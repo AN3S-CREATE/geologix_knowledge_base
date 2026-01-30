@@ -1,0 +1,19 @@
+{
+  "id": "72d5f5a9",
+  "title": "list all emails from 2024",
+  "folder_id": "default",
+  "created": "2026-01-30T10:29:48.634646",
+  "updated": "2026-01-30T10:29:48.659038",
+  "messages": [
+    {
+      "role": "user",
+      "content": "list all emails from 2024",
+      "timestamp": "2026-01-30T10:29:48.659027"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

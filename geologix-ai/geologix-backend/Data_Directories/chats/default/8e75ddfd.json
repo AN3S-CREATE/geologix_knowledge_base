@@ -1,0 +1,24 @@
+{
+  "id": "8e75ddfd",
+  "title": "search for invoices",
+  "folder_id": "default",
+  "created": "2026-01-30T10:16:43.306899",
+  "updated": "2026-01-30T10:16:45.248272",
+  "messages": [
+    {
+      "role": "user",
+      "content": "search for invoices",
+      "timestamp": "2026-01-30T10:16:43.325765"
+    },
+    {
+      "role": "assistant",
+      "content": "**Summary**\n\nYou've searched for the term \"for invoices\" and found three relevant emails sent by Busisiwe Zwane. These emails are likely related to requests from various parties, but they all seem to be connected to invoicing.\n\n**Retrieving Specific Items**\n\nI'd be happy to help you retrieve specific items from these emails. Here's what I can do:\n\n* **Email 1:** If you'd like, I can copy and paste the entire email for your reference.\n* **Email 2 & 3:** To streamline our conversation, could you please provide me with a brief summary of what each email says? This will help me understand which items you're interested in retrieving.\n\nPlease let me know how I can assist you further!",
+      "timestamp": "2026-01-30T10:16:45.248265"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "fa5ad9bd",
+  "title": "hello",
+  "folder_id": "default",
+  "created": "2026-01-30T09:57:00.992906",
+  "updated": "2026-01-30T09:57:05.901692",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hello",
+      "timestamp": "2026-01-30T09:57:01.089818"
+    },
+    {
+      "role": "assistant",
+      "content": "Hello! It's great to connect with you. How can I assist or learn more about Veralogix today?",
+      "timestamp": "2026-01-30T09:57:05.901679"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

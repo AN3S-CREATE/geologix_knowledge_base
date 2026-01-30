@@ -1,0 +1,19 @@
+{
+  "id": "87fc3677",
+  "title": "get it",
+  "folder_id": "default",
+  "created": "2026-01-30T10:29:31.472227",
+  "updated": "2026-01-30T10:29:31.489992",
+  "messages": [
+    {
+      "role": "user",
+      "content": "get it",
+      "timestamp": "2026-01-30T10:29:31.489979"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

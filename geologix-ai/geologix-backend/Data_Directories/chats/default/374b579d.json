@@ -1,0 +1,19 @@
+{
+  "id": "374b579d",
+  "title": "show me",
+  "folder_id": "default",
+  "created": "2026-01-30T10:29:24.638659",
+  "updated": "2026-01-30T10:29:24.676999",
+  "messages": [
+    {
+      "role": "user",
+      "content": "show me",
+      "timestamp": "2026-01-30T10:29:24.676986"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

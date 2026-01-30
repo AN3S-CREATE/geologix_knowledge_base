@@ -1,0 +1,24 @@
+{
+  "id": "f8ebb917",
+  "title": "Hello",
+  "folder_id": "finance",
+  "created": "2026-01-29T09:12:39.018168",
+  "updated": "2026-01-29T09:12:44.443525",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Hello",
+      "timestamp": "2026-01-29T09:12:39.203895"
+    },
+    {
+      "role": "assistant",
+      "content": "[ERROR] Ollama error: 500 Server Error: Internal Server Error for url: http://localhost:11434/api/chat",
+      "timestamp": "2026-01-29T09:12:44.443511"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

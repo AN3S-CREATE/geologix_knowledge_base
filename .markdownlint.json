@@ -1,0 +1,21 @@
+{
+  "default": true,
+  "MD013": false,
+  "MD033": false,
+  "MD041": false,
+  "MD032": {
+    "severity": "warning"
+  },
+  "MD022": {
+    "severity": "warning"
+  },
+  "MD031": {
+    "severity": "warning"
+  },
+  "MD036": false,
+  "MD040": {
+    "severity": "warning"
+  },
+  "MD034": false,
+  "MD026": false
+}

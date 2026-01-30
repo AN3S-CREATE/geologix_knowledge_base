@@ -1,0 +1,24 @@
+{
+  "id": "801978f1",
+  "title": "retrive the documnt about contracts",
+  "folder_id": "default",
+  "created": "2026-01-30T10:43:28.317025",
+  "updated": "2026-01-30T10:43:28.455206",
+  "messages": [
+    {
+      "role": "user",
+      "content": "retrive the documnt about contracts",
+      "timestamp": "2026-01-30T10:43:28.398923"
+    },
+    {
+      "role": "assistant",
+      "content": "I couldn't find the specific item you're looking for. Try being more specific or use the search function.",
+      "timestamp": "2026-01-30T10:43:28.455190"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

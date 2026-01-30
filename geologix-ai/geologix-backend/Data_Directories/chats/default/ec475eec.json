@@ -1,0 +1,24 @@
+{
+  "id": "ec475eec",
+  "title": "calculate 150 * 1.5",
+  "folder_id": "default",
+  "created": "2026-01-30T10:14:28.621999",
+  "updated": "2026-01-30T10:14:28.737540",
+  "messages": [
+    {
+      "role": "user",
+      "content": "calculate 150 * 1.5",
+      "timestamp": "2026-01-30T10:14:28.678814"
+    },
+    {
+      "role": "assistant",
+      "content": "The result is: {'expression': '150 * 1.5', 'result': 225.0}",
+      "timestamp": "2026-01-30T10:14:28.737531"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

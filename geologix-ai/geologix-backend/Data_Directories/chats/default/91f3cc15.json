@@ -1,0 +1,24 @@
+{
+  "id": "91f3cc15",
+  "title": "Retrieve the email about Veralogix",
+  "folder_id": "default",
+  "created": "2026-01-30T10:10:34.037280",
+  "updated": "2026-01-30T10:10:34.097905",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Retrieve the email about Veralogix",
+      "timestamp": "2026-01-30T10:10:34.063727"
+    },
+    {
+      "role": "assistant",
+      "content": "I couldn't find the specific item you're looking for. Try being more specific or use the search function.",
+      "timestamp": "2026-01-30T10:10:34.097894"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

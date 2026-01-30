@@ -1,0 +1,24 @@
+{
+  "id": "6127856b",
+  "title": "Search for emails about mining",
+  "folder_id": "default",
+  "created": "2026-01-30T10:10:40.599696",
+  "updated": "2026-01-30T10:10:40.679449",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Search for emails about mining",
+      "timestamp": "2026-01-30T10:10:40.637298"
+    },
+    {
+      "role": "assistant",
+      "content": "No results found for 'for emails about mining'. Try different search terms or check the index to see what's available.",
+      "timestamp": "2026-01-30T10:10:40.679439"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

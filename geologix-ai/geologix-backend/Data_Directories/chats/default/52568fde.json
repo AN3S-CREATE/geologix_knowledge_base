@@ -1,0 +1,19 @@
+{
+  "id": "52568fde",
+  "title": "Show me the index of emails",
+  "folder_id": "default",
+  "created": "2026-01-30T10:10:18.237825",
+  "updated": "2026-01-30T10:10:18.262552",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Show me the index of emails",
+      "timestamp": "2026-01-30T10:10:18.262538"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

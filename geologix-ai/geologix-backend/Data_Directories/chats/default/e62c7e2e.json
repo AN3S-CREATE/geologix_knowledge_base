@@ -1,0 +1,44 @@
+{
+  "id": "e62c7e2e",
+  "title": "hello",
+  "folder_id": "default",
+  "created": "2026-01-30T12:39:08.190287",
+  "updated": "2026-01-30T12:46:24.506487",
+  "messages": [
+    {
+      "role": "user",
+      "content": "hello",
+      "timestamp": "2026-01-30T12:39:08.256251"
+    },
+    {
+      "role": "assistant",
+      "content": "I'm here to help! Could you tell me more about what you're looking for?\n\n**A**. Search for specific information\n**B**. Get a list or overview\n**C**. Analyze data or create reports\n\nPlease reply with A, B, or C, or explain in your own words, and I'll help you right away!",
+      "timestamp": "2026-01-30T12:39:08.339694"
+    },
+    {
+      "role": "user",
+      "content": "find Peter Nordin emails",
+      "timestamp": "2026-01-30T12:40:35.601018"
+    },
+    {
+      "role": "assistant",
+      "content": "No results found for 'peter nordin emails'. Try different search terms or check the index to see what's available.",
+      "timestamp": "2026-01-30T12:40:39.881949"
+    },
+    {
+      "role": "user",
+      "content": "peter",
+      "timestamp": "2026-01-30T12:46:17.712223"
+    },
+    {
+      "role": "assistant",
+      "content": "I'm here to help! Could you tell me more about what you're looking for?\n\n**A**. Search for specific information\n**B**. Get a list or overview\n**C**. Analyze data or create reports\n\nPlease reply with A, B, or C, or explain in your own words, and I'll help you right away!",
+      "timestamp": "2026-01-30T12:46:24.506472"
+    }
+  ],
+  "metadata": {
+    "total_tokens": 0,
+    "deep_thinking_used": false,
+    "web_search_used": false
+  }
+}

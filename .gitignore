@@ -1,0 +1,18 @@
+
+# System & Environment
+.venv/
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+
+# Large Data Directories (Potential sensitive info or too large for GitHub free tier)
+# Uncomment these lines if you WANT to include them, but be warned about size limits (100MB per file, 1GB repo soft limit)
+full_directory_scan.txt
+archives/
+attachments/
+emails/
+Company_documents/
+
+# Logs
+*.log
