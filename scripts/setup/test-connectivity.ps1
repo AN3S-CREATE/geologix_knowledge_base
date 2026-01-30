@@ -30,11 +30,11 @@ function Test-Service {
     
     try {
         $params = @{
-            Uri = $Url
-            Method = $Method
-            TimeoutSec = $TimeoutSeconds
+            Uri             = $Url
+            Method          = $Method
+            TimeoutSec      = $TimeoutSeconds
             UseBasicParsing = $true
-            Headers = $Headers
+            Headers         = $Headers
         }
         
         if ($Body) {
@@ -50,18 +50,20 @@ function Test-Service {
             Write-Host "✅ PASS ($status)" -ForegroundColor Green
             Write-Host "   Response: $content..." -ForegroundColor Gray
             $script:passed++
-            $script:tests += @{Name=$TestName; Status="PASS"; Status_code=$status; Url=$Url}
+            $script:tests += @{Name = $TestName; Status = "PASS"; Status_code = $status; Url = $Url }
             return $true
-        } else {
+        }
+        else {
             Write-Host "❌ FAIL ($status)" -ForegroundColor Red
             $script:failed++
-            $script:tests += @{Name=$TestName; Status="FAIL"; Status_code=$status; Url=$Url}
+            $script:tests += @{Name = $TestName; Status = "FAIL"; Status_code = $status; Url = $Url }
             return $false
         }
-    } catch {
+    }
+    catch {
         Write-Host "❌ FAIL: $($_.Exception.Message)" -ForegroundColor Red
         $script:failed++
-        $script:tests += @{Name=$TestName; Status="FAIL"; Error=$_.Exception.Message; Url=$Url}
+        $script:tests += @{Name = $TestName; Status = "FAIL"; Error = $_.Exception.Message; Url = $Url }
         return $false
     }
 }
@@ -80,18 +82,20 @@ function Test-Port {
         if ($connection) {
             Write-Host "✅ PASS: Port $Port is open" -ForegroundColor Green
             $script:passed++
-            $script:tests += @{Name="$ServiceName Port"; Status="PASS"; Port=$Port}
+            $script:tests += @{Name = "$ServiceName Port"; Status = "PASS"; Port = $Port }
             return $true
-        } else {
+        }
+        else {
             Write-Host "❌ FAIL: Port $Port is closed" -ForegroundColor Red
             $script:failed++
-            $script:tests += @{Name="$ServiceName Port"; Status="FAIL"; Port=$Port}
+            $script:tests += @{Name = "$ServiceName Port"; Status = "FAIL"; Port = $Port }
             return $false
         }
-    } catch {
+    }
+    catch {
         Write-Host "❌ FAIL: Cannot check port $Port" -ForegroundColor Red
         $script:failed++
-        $script:tests += @{Name="$ServiceName Port"; Status="FAIL"; Error=$_.Exception.Message; Port=$Port}
+        $script:tests += @{Name = "$ServiceName Port"; Status = "FAIL"; Error = $_.Exception.Message; Port = $Port }
         return $false
     }
 }
@@ -110,18 +114,20 @@ function Test-Process {
         if ($process) {
             Write-Host "✅ PASS: $DisplayName is running (PID: $($process.Id))" -ForegroundColor Green
             $script:passed++
-            $script:tests += @{Name="$DisplayName Process"; Status="PASS"; PID=$process.Id}
+            $script:tests += @{Name = "$DisplayName Process"; Status = "PASS"; PID = $process.Id }
             return $true
-        } else {
+        }
+        else {
             Write-Host "❌ FAIL: $DisplayName is not running" -ForegroundColor Red
             $script:failed++
-            $script:tests += @{Name="$DisplayName Process"; Status="FAIL"}
+            $script:tests += @{Name = "$DisplayName Process"; Status = "FAIL" }
             return $false
         }
-    } catch {
+    }
+    catch {
         Write-Host "❌ FAIL: Cannot check process $ProcessName" -ForegroundColor Red
         $script:failed++
-        $script:tests += @{Name="$DisplayName Process"; Status="FAIL"; Error=$_.Exception.Message}
+        $script:tests += @{Name = "$DisplayName Process"; Status = "FAIL"; Error = $_.Exception.Message }
         return $false
     }
 }
@@ -193,24 +199,25 @@ Write-Host ""
 Write-Host "🧪 Testing: Backend to AI Model Integration" -ForegroundColor Yellow
 try {
     $testBody = @{
-        query = "test query"
-        limit = 3
+        query   = "test query"
+        limit   = 3
         sources = @("documents")
     } | ConvertTo-Json
     
     $response = Invoke-WebRequest -Uri "$BACKEND_URL/api/search" -Method POST -Body $testBody -ContentType "application/json" -TimeoutSec 15 -UseBasicParsing
     Write-Host "✅ PASS: Backend can communicate with AI model" -ForegroundColor Green
     $passed++
-    $tests += @{Name="Backend-AI Integration"; Status="PASS"}
-} catch {
+    $tests += @{Name = "Backend-AI Integration"; Status = "PASS" }
+}
+catch {
     Write-Host "❌ FAIL: Backend-AI integration failed" -ForegroundColor Red
     $failed++
-    $tests += @{Name="Backend-AI Integration"; Status="FAIL"; Error=$_.Exception.Message}
+    $tests += @{Name = "Backend-AI Integration"; Status = "FAIL"; Error = $_.Exception.Message }
 }
 
 # Test file system connectivity
 Write-Host "🧪 Testing: File System Connectivity" -ForegroundColor Yellow
-$projectRoot = "Q:\Dev\Google Avinity\geologix_knowledge_base"
+$projectRoot = Resolve-Path (Join-Path $PSScriptRoot "..\..")
 $requiredPaths = @(
     "$projectRoot\geologix-ai\UI\index.html",
     "$projectRoot\geologix-ai\geologix-backend\Core_System\server.py",
@@ -229,10 +236,11 @@ foreach ($path in $requiredPaths) {
 if ($allFilesExist) {
     Write-Host "✅ PASS: All required files and folders exist" -ForegroundColor Green
     $passed++
-    $tests += @{Name="File System"; Status="PASS"}
-} else {
+    $tests += @{Name = "File System"; Status = "PASS" }
+}
+else {
     $failed++
-    $tests += @{Name="File System"; Status="FAIL"}
+    $tests += @{Name = "File System"; Status = "FAIL" }
 }
 
 # Test 7: Performance Tests
@@ -252,20 +260,23 @@ try {
     if ($responseTime -lt 2000) {
         Write-Host "✅ PASS: Backend response time ${responseTime}ms (< 2s)" -ForegroundColor Green
         $passed++
-        $tests += @{Name="Backend Performance"; Status="PASS"; ResponseTime=$responseTime}
-    } elseif ($responseTime -lt 5000) {
+        $tests += @{Name = "Backend Performance"; Status = "PASS"; ResponseTime = $responseTime }
+    }
+    elseif ($responseTime -lt 5000) {
         Write-Host "⚠️  WARN: Backend response time ${responseTime}ms (< 5s)" -ForegroundColor Yellow
         $passed++
-        $tests += @{Name="Backend Performance"; Status="WARN"; ResponseTime=$responseTime}
-    } else {
+        $tests += @{Name = "Backend Performance"; Status = "WARN"; ResponseTime = $responseTime }
+    }
+    else {
         Write-Host "❌ FAIL: Backend response time ${responseTime}ms (> 5s)" -ForegroundColor Red
         $failed++
-        $tests += @{Name="Backend Performance"; Status="FAIL"; ResponseTime=$responseTime}
+        $tests += @{Name = "Backend Performance"; Status = "FAIL"; ResponseTime = $responseTime }
     }
-} catch {
+}
+catch {
     Write-Host "❌ FAIL: Cannot measure backend performance" -ForegroundColor Red
     $failed++
-    $tests += @{Name="Backend Performance"; Status="FAIL"; Error=$_.Exception.Message}
+    $tests += @{Name = "Backend Performance"; Status = "FAIL"; Error = $_.Exception.Message }
 }
 
 # Generate Summary Report
@@ -329,7 +340,8 @@ if ($failedTests) {
     Write-Host "   1. Run '.\stop-all-services.ps1' to clean up" -ForegroundColor White
     Write-Host "   2. Run '.\start-all-services.ps1' to restart everything" -ForegroundColor White
     Write-Host "   3. Check individual service windows for error messages" -ForegroundColor White
-} else {
+}
+else {
     Write-Host "🎉 All systems are operational!" -ForegroundColor Green
     Write-Host ""
     Write-Host "✅ GeoLogix AI is ready for use" -ForegroundColor Green

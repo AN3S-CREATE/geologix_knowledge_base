@@ -9,7 +9,14 @@ from pathlib import Path
 from datetime import datetime
 
 # Log directory
-LOG_DIR = Path(__file__).resolve().parent.parent / "Data_Directories" / "logs"
+try:
+    from Configuration.config import LOGS_DIR
+except ImportError:
+    # Fallback for manual script execution or if sys.path is weird
+    LOG_DIR = Path(__file__).resolve().parent.parent / "Data_Directories" / "logs"
+else:
+    LOG_DIR = LOGS_DIR
+
 LOG_DIR.mkdir(parents=True, exist_ok=True)
 
 # Log file with date

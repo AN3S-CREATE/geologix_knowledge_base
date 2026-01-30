@@ -12,14 +12,16 @@ $warnings = 0
 $errors = 0
 
 # Configuration
-$basePath = Split-Path -Parent $PSScriptRoot
-$backendPath = Join-Path $PSScriptRoot "geologix-backend"
+# Configuration
+$basePath = Resolve-Path (Join-Path $PSScriptRoot "..\..")
+$backendPath = Join-Path $basePath "geologix-ai\geologix-backend"
 
 $pythonExe = $null
 $pythonArgs = @()
 if (Get-Command python -ErrorAction SilentlyContinue) {
     $pythonExe = "python"
-} elseif (Get-Command py -ErrorAction SilentlyContinue) {
+}
+elseif (Get-Command py -ErrorAction SilentlyContinue) {
     $pythonExe = "py"
     $pythonArgs = @("-3")
 }
@@ -35,10 +37,12 @@ try {
     $pythonVersion = & $pythonExe @pythonArgs --version 2>&1
     if ($pythonVersion -match "Python 3\.1([0-9])") {
         Write-Host "      ✅ $pythonVersion" -ForegroundColor Green
-    } elseif ($pythonVersion -match "Python 3\.([0-9])") {
+    }
+    elseif ($pythonVersion -match "Python 3\.([0-9])") {
         Write-Host "      ⚠️  $pythonVersion (Python 3.10+ recommended)" -ForegroundColor Yellow
         $warnings++
-    } else {
+    }
+    else {
         Write-Host "      ⚠️  $pythonVersion (unexpected version)" -ForegroundColor Yellow
         $warnings++
     }
@@ -46,7 +50,8 @@ try {
     # Check pip
     $pipVersion = & $pythonExe @pythonArgs -m pip --version 2>&1
     Write-Host "      ✅ pip: $($pipVersion.Split(' ')[1])" -ForegroundColor Green
-} catch {
+}
+catch {
     Write-Host "      ❌ Python not found in PATH" -ForegroundColor Red
     Write-Host "         Install from: https://www.python.org/downloads/" -ForegroundColor Gray
     $allGood = $false
@@ -64,49 +69,53 @@ if (-not $pythonExe) {
     Write-Host "      ❌ Skipping package check (Python not found)" -ForegroundColor Red
     $allGood = $false
     $errors++
-} else {
-$requiredPackages = @(
-    "fastapi",
-    "uvicorn",
-    "pydantic",
-    "requests",
-    "python-multipart",
-    "httpx",
-    "python-jose",
-    "passlib",
-    "bcrypt",
-    "beautifulsoup4",
-    "lxml",
-    "python-dotenv",
-    "psutil"
-)
-
-foreach ($pkg in $requiredPackages) {
-    $null = & $pythonExe @pythonArgs -m pip show $pkg 2>&1
-    if ($LASTEXITCODE -eq 0) {
-        $installedCount++
-    } else {
-        $missingPackages += $pkg
-    }
 }
+else {
+    $requiredPackages = @(
+        "fastapi",
+        "uvicorn",
+        "pydantic",
+        "requests",
+        "python-multipart",
+        "httpx",
+        "python-jose",
+        "passlib",
+        "bcrypt",
+        "beautifulsoup4",
+        "lxml",
+        "python-dotenv",
+        "psutil"
+    )
 
-if ($missingPackages.Count -eq 0) {
-    Write-Host "      ✅ All $($requiredPackages.Count) required packages installed" -ForegroundColor Green
-} else {
-    Write-Host "      ⚠️  $installedCount / $($requiredPackages.Count) packages installed" -ForegroundColor Yellow
-    Write-Host "      Missing packages:" -ForegroundColor Red
-    foreach ($pkg in $missingPackages) {
-        Write-Host "        • $pkg" -ForegroundColor Red
+    foreach ($pkg in $requiredPackages) {
+        $null = & $pythonExe @pythonArgs -m pip show $pkg 2>&1
+        if ($LASTEXITCODE -eq 0) {
+            $installedCount++
+        }
+        else {
+            $missingPackages += $pkg
+        }
     }
-    Write-Host ""
-    Write-Host "      Fix: Run the following command:" -ForegroundColor White
-    if ($pythonExe -eq "py") {
-        Write-Host "      py -3 -m pip install -r `"$backendPath\Configuration\requirements.txt`"" -ForegroundColor Gray
-    } else {
-        Write-Host "      python -m pip install -r `"$backendPath\Configuration\requirements.txt`"" -ForegroundColor Gray
+
+    if ($missingPackages.Count -eq 0) {
+        Write-Host "      ✅ All $($requiredPackages.Count) required packages installed" -ForegroundColor Green
     }
-    $warnings++
-}
+    else {
+        Write-Host "      ⚠️  $installedCount / $($requiredPackages.Count) packages installed" -ForegroundColor Yellow
+        Write-Host "      Missing packages:" -ForegroundColor Red
+        foreach ($pkg in $missingPackages) {
+            Write-Host "        • $pkg" -ForegroundColor Red
+        }
+        Write-Host ""
+        Write-Host "      Fix: Run the following command:" -ForegroundColor White
+        if ($pythonExe -eq "py") {
+            Write-Host "      py -3 -m pip install -r `"$backendPath\Configuration\requirements.txt`"" -ForegroundColor Gray
+        }
+        else {
+            Write-Host "      python -m pip install -r `"$backendPath\Configuration\requirements.txt`"" -ForegroundColor Gray
+        }
+        $warnings++
+    }
 }
 Write-Host ""
 
@@ -114,14 +123,14 @@ Write-Host ""
 Write-Host "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━" -ForegroundColor Gray
 Write-Host "[3/8] Checking file structure..." -ForegroundColor Cyan
 $requiredPaths = @(
-    @{Path="geologix-ai\geologix-backend\Core_System\server.py"; Desc="Backend server"},
-    @{Path="geologix-ai\geologix-backend\Core_System\knowledge_engine.py"; Desc="Knowledge engine"},
-    @{Path="geologix-ai\geologix-backend\Import_Tools"; Desc="Import tools"},
-    @{Path="geologix-ai\geologix-backend\Configuration"; Desc="Configuration"},
-    @{Path="geologix-ai\UI\index.html"; Desc="UI landing page"},
-    @{Path="Company_documents"; Desc="Company documents"},
-    @{Path="emails"; Desc="Email archives"},
-    @{Path="knowledge_database"; Desc="Knowledge database"}
+    @{Path = "geologix-ai\geologix-backend\Core_System\server.py"; Desc = "Backend server" },
+    @{Path = "geologix-ai\geologix-backend\Core_System\knowledge_engine.py"; Desc = "Knowledge engine" },
+    @{Path = "geologix-ai\geologix-backend\Import_Tools"; Desc = "Import tools" },
+    @{Path = "geologix-ai\geologix-backend\Configuration"; Desc = "Configuration" },
+    @{Path = "geologix-ai\UI\index.html"; Desc = "UI landing page" },
+    @{Path = "Company_documents"; Desc = "Company documents" },
+    @{Path = "emails"; Desc = "Email archives" },
+    @{Path = "knowledge_database"; Desc = "Knowledge database" }
 )
 
 $missingPaths = @()
@@ -129,7 +138,8 @@ foreach ($item in $requiredPaths) {
     $fullPath = Join-Path $basePath $item.Path
     if (Test-Path $fullPath) {
         Write-Host "      ✅ $($item.Desc)" -ForegroundColor Green
-    } else {
+    }
+    else {
         Write-Host "      ❌ $($item.Desc) - NOT FOUND" -ForegroundColor Red
         Write-Host "         Path: $fullPath" -ForegroundColor Gray
         $missingPaths += $item
@@ -151,18 +161,21 @@ $requirementsPath = Join-Path $backendPath "Configuration\requirements.txt"
 
 if (Test-Path $requirementsPath) {
     Write-Host "      ✅ requirements.txt found" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "      ❌ requirements.txt not found" -ForegroundColor Red
     $errors++
 }
 
 if (Test-Path $envPath) {
     Write-Host "      ✅ .env file configured" -ForegroundColor Green
-} elseif (Test-Path $envExamplePath) {
+}
+elseif (Test-Path $envExamplePath) {
     Write-Host "      ⚠️  .env file not found (using defaults)" -ForegroundColor Yellow
     Write-Host "         Copy .env.example to .env and configure it" -ForegroundColor Gray
     $warnings++
-} else {
+}
+else {
     Write-Host "      ⚠️  No environment configuration found" -ForegroundColor Yellow
     $warnings++
 }
@@ -180,7 +193,8 @@ try {
     if ($modelsData.data) {
         Write-Host "      ✅ AI models loaded: $($modelsData.data.Count)" -ForegroundColor Green
     }
-} catch {
+}
+catch {
     Write-Host "      ⚠️  LM Studio not detected (server not running)" -ForegroundColor Yellow
     Write-Host "         Download from: https://lmstudio.ai/" -ForegroundColor Gray
     Write-Host "         Make sure to load an AI model and start the server" -ForegroundColor Gray
@@ -202,11 +216,13 @@ try {
             if ($healthData.status -eq "healthy") {
                 Write-Host "      ✅ Server status: healthy" -ForegroundColor Green
             }
-        } catch {
+        }
+        catch {
             # Ignore JSON parse errors
         }
     }
-} catch {
+}
+catch {
     Write-Host "      ⚠️  Backend server not running" -ForegroundColor Yellow
     Write-Host "         Start with: .\start-geologix.ps1" -ForegroundColor Gray
     $warnings++
@@ -224,26 +240,30 @@ $kbFiles = @(Get-ChildItem -Path (Join-Path $basePath "knowledge_database") -Fil
 
 if ($emailFiles.Count -gt 0) {
     Write-Host "      ✅ Email archives: $($emailFiles.Count) files" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "      ⚠️  Email archives: empty" -ForegroundColor Yellow
 }
 
 if ($docFiles.Count -gt 0) {
     Write-Host "      ✅ Company documents: $($docFiles.Count) files" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "      ⚠️  Company documents: empty" -ForegroundColor Yellow
 }
 
 if ($kbFiles.Count -gt 0) {
     Write-Host "      ✅ Knowledge database: $($kbFiles.Count) files" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "      ⚠️  Knowledge database: empty" -ForegroundColor Yellow
 }
 
 $chromaDbPath = Join-Path $backendPath "Data_Directories\chroma_db"
 if (Test-Path $chromaDbPath) {
     Write-Host "      ✅ ChromaDB initialized" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "      ⚠️  ChromaDB not initialized" -ForegroundColor Yellow
     Write-Host "         Run import scripts to populate the knowledge base" -ForegroundColor Gray
     $warnings++
@@ -262,10 +282,12 @@ Write-Host "      Disk space on $($drive.Name):\ - $freeSpaceGB GB free / $total
 
 if ($freeSpaceGB -gt 50) {
     Write-Host "      ✅ Sufficient disk space" -ForegroundColor Green
-} elseif ($freeSpaceGB -gt 20) {
+}
+elseif ($freeSpaceGB -gt 20) {
     Write-Host "      ⚠️  Low disk space (50GB+ recommended)" -ForegroundColor Yellow
     $warnings++
-} else {
+}
+else {
     Write-Host "      ❌ Critical: Very low disk space" -ForegroundColor Red
     $errors++
 }
@@ -277,9 +299,11 @@ Write-Host "      System RAM: $ramGB GB" -ForegroundColor Gray
 
 if ($ramGB -ge 32) {
     Write-Host "      ✅ Excellent RAM capacity" -ForegroundColor Green
-} elseif ($ramGB -ge 16) {
+}
+elseif ($ramGB -ge 16) {
     Write-Host "      ✅ Sufficient RAM" -ForegroundColor Green
-} else {
+}
+else {
     Write-Host "      ⚠️  Low RAM (16GB+ recommended)" -ForegroundColor Yellow
     $warnings++
 }
@@ -298,12 +322,14 @@ if ($errors -eq 0 -and $warnings -eq 0) {
     Write-Host "  1. Run .\start-geologix.ps1 to launch the system" -ForegroundColor Gray
     Write-Host "  2. Import knowledge with Import_Tools scripts if needed" -ForegroundColor Gray
     Write-Host "  3. Access the UI at http://localhost:8000" -ForegroundColor Gray
-} elseif ($errors -eq 0) {
+}
+elseif ($errors -eq 0) {
     Write-Host "⚠️  Installation ready with $warnings warning(s)" -ForegroundColor Yellow
     Write-Host ""
     Write-Host "System is functional but could be improved." -ForegroundColor White
     Write-Host "Review warnings above and fix when convenient." -ForegroundColor White
-} else {
+}
+else {
     Write-Host "❌ Installation incomplete: $errors error(s), $warnings warning(s)" -ForegroundColor Red
     Write-Host ""
     Write-Host "Please fix the errors above before running GeoLogix AI." -ForegroundColor White

@@ -8,8 +8,10 @@ Write-Host "============================================" -ForegroundColor Cyan
 Write-Host ""
 
 # Configuration
-$backendPath = Join-Path $PSScriptRoot "geologix-backend"
-$uiFilePath = Join-Path $PSScriptRoot "UI\index.html"
+# Configuration
+$repoRoot = Resolve-Path (Join-Path $PSScriptRoot "..\..")
+$backendPath = Join-Path $repoRoot "geologix-ai\geologix-backend"
+$uiFilePath = Join-Path $repoRoot "geologix-ai\UI\index.html"
 $uiUrl = "http://localhost:8000/"
 $healthCheckUrl = "http://localhost:8000/api/health"
 $lmStudioUrl = "http://localhost:1234/v1/models"

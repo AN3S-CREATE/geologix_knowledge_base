@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 # Base Paths
-BACKEND_DIR = Path(__file__).resolve().parent.parent
+BACKEND_DIR = Path(__file__).resolve().parents[1]
 PROJECT_ROOT = BACKEND_DIR.parent.parent  # Points to geologix_knowledge_base
 
 # Data Sources (Read-Only)
@@ -10,10 +10,14 @@ SOURCE_DOCUMENTS = PROJECT_ROOT / "Company_documents"
 SOURCE_EMAILS = PROJECT_ROOT / "emails"
 SOURCE_KNOWLEDGE_DB = PROJECT_ROOT / "knowledge_database"
 
-# Internal Data (Read/Write)
-DATA_DIR = BACKEND_DIR / "Data_Directories"
+# Internal Data (Read/Write) - Absolute Path Resolution
+# Uses GEOLOGIX_DATA_DIR env var if set, otherwise defaults to absolute path inside backend
+DATA_DIR = Path(os.getenv("GEOLOGIX_DATA_DIR", BACKEND_DIR / "Data_Directories")).resolve()
+
+# Subdirectories
 STORAGE_DIR = DATA_DIR / "storage"
 CHROMA_DB_DIR = DATA_DIR / "chroma_db"
+CHATS_DIR = DATA_DIR / "chats"
 LOGS_DIR = DATA_DIR / "logs"
 
 # System Settings
@@ -43,5 +47,12 @@ AI_PROVIDER = "ollama"
 CONTEXT_WINDOW = 128000
 
 # Ensure directories exist
-for path in [STORAGE_DIR, CHROMA_DB_DIR, LOGS_DIR]:
+for path in [STORAGE_DIR, CHROMA_DB_DIR, LOGS_DIR, CHATS_DIR]:
     path.mkdir(parents=True, exist_ok=True)
+
+# Startup Diagnostics (Visible in Console)
+print(f"--- GEOLOGIX CONFIG ---")
+print(f"DATA_DIR: {DATA_DIR}")
+print(f"CHATS_DIR: {CHATS_DIR} ({len(list(CHATS_DIR.glob('*.json'))) if CHATS_DIR.exists() else 0} files)")
+print(f"CHROMA_DB: {CHROMA_DB_DIR} (Exists: {CHROMA_DB_DIR.exists()})")
+print(f"-----------------------")
