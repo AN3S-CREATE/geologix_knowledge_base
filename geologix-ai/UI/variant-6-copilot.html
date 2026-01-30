@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoLogix AI | Copilot Workspace</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/variant-6.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@800;900&family=Space+Grotesk:wght@700&family=JetBrains+Mono:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <div class="grid-overlay"></div>
+
+    <header class="app-header" role="banner">
+        <div class="logo-area">
+            <div class="header-logo-text">GeoLogix</div>
+            <span class="version-tag">GEOLOGIX // REL 1.0.0</span>
+        </div>
+        <div class="header-status" role="status" aria-live="polite">
+            <div class="status-item">
+                <span class="status-label">API</span>
+                <span class="status-val" id="api-status" aria-label="API connection status">CHECK</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">KB</span>
+                <span class="status-val" id="kb-total" aria-label="Knowledge base total entries">—</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="copilot-grid" id="main-content">
+        <aside class="panel left-panel" role="complementary" aria-label="Folders and chats">
+            <div class="sidebar-section">
+                <div class="section-head">
+                    <div class="section-title">Folders</div>
+                    <button id="new-folder-toggle" class="btn-secondary btn-small" aria-expanded="false" aria-controls="new-folder-form">New</button>
+                </div>
+
+                <div id="new-folder-form" class="inline-form hidden" role="form" aria-labelledby="new-folder-toggle">
+                    <input id="new-folder-name" class="text-input" type="text" placeholder="Folder name" aria-label="New folder name" required>
+                    <button id="create-folder-btn" class="btn-primary btn-small">Create</button>
+                    <button id="cancel-folder-btn" class="btn-secondary btn-small">Cancel</button>
+                </div>
+
+                <div id="folder-list" class="list" role="list" aria-label="Folders"></div>
+            </div>
+
+            <div class="sidebar-section">
+                <div class="section-head">
+                    <div class="section-title">Chats</div>
+                    <div class="section-actions">
+                        <button id="new-chat-btn" class="btn-primary btn-small" aria-label="Create new chat">New</button>
+                        <button id="delete-chat-btn" class="btn-secondary btn-small" aria-label="Delete selected chat" disabled>Delete</button>
+                    </div>
+                </div>
+
+                <div class="inline-form">
+                    <select id="move-chat-target" class="select" aria-label="Move chat to folder" title="Move chat target folder"></select>
+                    <button id="move-chat-btn" class="btn-secondary btn-small" aria-label="Move selected chat" disabled>Move</button>
+                </div>
+
+                <div id="chat-list" class="list" role="list" aria-label="Chat conversations"></div>
+            </div>
+        </aside>
+
+        <section class="panel center-panel" role="main" aria-label="Chat conversation">
+            <div class="chat-header">
+                <div class="chat-title" id="active-chat-title" aria-live="polite" aria-atomic="true">Select a chat</div>
+                <div class="chat-controls">
+                    <label class="toggle">
+                        <input type="checkbox" id="toggle-deep" aria-describedby="deep-desc">
+                        <span>Deep</span>
+                    </label>
+                    <span id="deep-desc" class="sr-only">Enable deep search mode</span>
+                    
+                    <label class="toggle">
+                        <input type="checkbox" id="toggle-web" aria-describedby="web-desc">
+                        <span>Web</span>
+                    </label>
+                    <span id="web-desc" class="sr-only">Enable web search</span>
+                    
+                    <select id="model-select" class="select" aria-label="Model selection" title="Model selection">
+                        <option value="auto">auto</option>
+                        <option value="geologix-core-v1">geologix-core-v1</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="chat-messages" class="chat-messages" role="log" aria-live="polite" aria-label="Chat messages"></div>
+
+            <div class="composer" role="form" aria-label="Message composer">
+                <div class="composer-actions">
+                    <button id="upload-btn" class="icon-btn" title="Upload file" aria-label="Upload file" type="button">📎</button>
+                    <button id="voice-btn" class="icon-btn" title="Voice input" aria-label="Voice input" type="button">🎙️</button>
+                </div>
+                <textarea 
+                    id="chat-input" 
+                    class="composer-input" 
+                    placeholder="Message GeoLogix..." 
+                    aria-label="Type your message"
+                    rows="1"
+                    maxlength="4000"
+                ></textarea>
+                <button id="send-btn" class="btn-primary send-btn" aria-label="Send message" type="submit">Send</button>
+            </div>
+        </section>
+
+        <aside class="panel right-panel" role="complementary" aria-label="AI agents and tools">
+            <div class="right-scroll">
+                <div class="right-section ai-agents-section">
+                    <div class="section-head">
+                        <div class="section-title">AI Agents</div>
+                    </div>
+                    <div class="ai-agents-list" aria-label="Available AI agents">
+                        <button class="ai-agent active" id="agent-geologix" aria-pressed="true" type="button">
+                            <span class="agent-status online" aria-label="Online"></span>
+                            <span class="agent-name">GeoLogix AI</span>
+                            <span class="agent-badge default">DEFAULT</span>
+                        </button>
+                        <button class="ai-agent" id="agent-neurologix" aria-pressed="false" type="button">
+                            <span class="agent-status online" aria-label="Online"></span>
+                            <span class="agent-name">Neurologix AI</span>
+                        </button>
+                        <button class="ai-agent" id="agent-orecal" aria-pressed="false" type="button">
+                            <span class="agent-status online" aria-label="Online"></span>
+                            <span class="agent-name">Orecal AI</span>
+                        </button>
+                        <button class="ai-agent" id="agent-veralogix-eye" aria-pressed="false" type="button">
+                            <span class="agent-status online" aria-label="Online"></span>
+                            <span class="agent-name">Veralogix-Eye</span>
+                        </button>
+                        <button class="ai-agent" id="agent-logix-control" aria-pressed="false" type="button">
+                            <span class="agent-status online" aria-label="Online"></span>
+                            <span class="agent-name">Logix-Control</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="right-section ai-tech-house-section">
+                    <div class="section-head">
+                        <div class="section-title">AI Tech House</div>
+                    </div>
+                    <div class="ai-tech-house-tools">
+                        <div class="inline-form">
+                            <select id="ai-tech-select" class="select" aria-label="AI Tech tool selection" title="AI Tech tool selection">
+                                <option value="">Select AI Tech Tool...</option>
+                                <option value="neural-network">Neural Network Analyzer</option>
+                                <option value="pattern-recognition">Pattern Recognition</option>
+                                <option value="data-processor">Data Processor</option>
+                                <option value="ai-optimizer">AI Optimizer</option>
+                            </select>
+                            <button id="run-ai-tech-btn" class="btn-primary btn-small">Run</button>
+                        </div>
+                        <div id="ai-tech-desc" class="tool-desc">AI Tech House specialized tools for advanced analysis and processing.</div>
+                        <div id="ai-tech-params" class="tool-params"></div>
+                        <div class="section-head mt-1">
+                            <div class="section-title">AI Tech Output</div>
+                            <button id="ai-tech-to-chat-btn" class="btn-secondary btn-small">To chat</button>
+                        </div>
+                        <pre id="ai-tech-output" class="tool-output"></pre>
+                    </div>
+                </div>
+
+                <div class="right-section">
+                    <div class="section-head">
+                        <div class="section-title">General Tools</div>
+                    </div>
+
+                    <div class="inline-form">
+                        <select id="tool-select" class="select" aria-label="Tool selection" title="Tool selection"></select>
+                        <button id="run-tool-btn" class="btn-primary btn-small">Run</button>
+                    </div>
+
+                    <div id="tool-desc" class="tool-desc"></div>
+                    <div id="tool-params" class="tool-params"></div>
+
+                    <div class="section-head mt-1">
+                        <div class="section-title">Output</div>
+                        <button id="tool-to-chat-btn" class="btn-secondary btn-small">To chat</button>
+                    </div>
+
+                    <pre id="tool-output" class="tool-output"></pre>
+                </div>
+
+                <div class="right-section">
+                    <div class="section-head">
+                        <div class="section-title">Knowledge Stats</div>
+                        <button id="refresh-stats-btn" class="btn-secondary btn-small">Refresh</button>
+                    </div>
+                    <div id="stats" class="stats-grid"></div>
+                </div>
+
+                <div class="right-section">
+                    <div class="section-head">
+                        <div class="section-title">Files</div>
+                    </div>
+                    <div class="inline-form">
+                        <select id="file-source" class="select" aria-label="File source" title="File source">
+                            <option value="documents">documents</option>
+                            <option value="emails">emails</option>
+                            <option value="knowledge">knowledge</option>
+                        </select>
+                        <button id="load-files-btn" class="btn-secondary btn-small">Load</button>
+                    </div>
+                    <div id="file-list" class="list"></div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <script src="scripts/shared-utils.js"></script>
+    <script src="scripts/variant-6.js"></script>
+</body>
+
+</html>
