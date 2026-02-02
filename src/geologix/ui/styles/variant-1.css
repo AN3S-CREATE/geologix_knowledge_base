@@ -1,0 +1,103 @@
+@import url('main.css');
+
+.minimal-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.minimal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(111, 124, 132, 0.3);
+}
+
+.minimal-logo {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.accent {
+  color: var(--color-electric-lime);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-signal-green);
+}
+
+.chat-area {
+  flex: 1;
+  overflow: auto;
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.message {
+  max-width: 70%;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1px solid rgba(111, 124, 132, 0.25);
+  background: rgba(29, 38, 43, 0.75);
+}
+
+.user-message {
+  align-self: flex-end;
+  background: rgba(70, 92, 107, 0.25);
+  border-color: rgba(70, 92, 107, 0.6);
+}
+
+.ai-message {
+  align-self: flex-start;
+}
+
+.msg-content {
+  white-space: pre-wrap;
+}
+
+.input-container {
+  border-top: 1px solid rgba(111, 124, 132, 0.3);
+  padding-top: 0.75rem;
+}
+
+.input-wrapper {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.minimal-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(111, 124, 132, 0.35);
+  background: rgba(11, 14, 21, 0.4);
+  color: var(--color-off-white);
+  outline: none;
+}
+
+.icon-btn,
+.send-btn {
+  background: rgba(48, 62, 71, 0.4);
+  border: 1px solid rgba(111, 124, 132, 0.35);
+  color: var(--color-off-white);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  cursor: pointer;
+}
+
+.icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

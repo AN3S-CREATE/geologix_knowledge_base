@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoLogix AI | Professional</title>
+    <link rel="stylesheet" href="styles/variant-2.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&family=Space+Grotesk:wght@700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+
+        <!-- Professional Header -->
+        <header class="app-header">
+            <div class="header-left">
+                <h1 class="logo">GEO<span class="accent">LOGIX</span> AI</h1>
+                <span class="version">v1.0.0</span>
+            </div>
+            <div class="header-center">
+                <nav class="quick-nav">
+                    <button class="nav-item active" data-view="chat">Chat</button>
+                    <button class="nav-item" data-view="search">Search</button>
+                    <button class="nav-item" data-view="upload">Upload</button>
+                </nav>
+            </div>
+            <div class="header-right">
+                <div class="status-indicator online">
+                    <span class="status-label">System</span>
+                    <span class="status-value">Online</span>
+                </div>
+                <button class="icon-btn theme-toggle" id="theme-toggle" title="Toggle Theme">🌓</button>
+            </div>
+        </header>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+            <!-- Chat View (default) -->
+            <div class="view-panel chat-view active" id="chat-view">
+                <div class="chat-container" id="chat-display">
+                    <!-- Welcome message -->
+                    <div class="message ai-message">
+                        <div class="message-avatar">AI</div>
+                        <div class="message-content">
+                            <div class="message-text">
+                                <strong>GeoLogix AI is ready.</strong><br><br>
+                                I have access to your company documents, emails, and knowledge base. Ask me anything
+                                about:
+                                <ul>
+                                    <li>BEE compliance and Mining Charter regulations</li>
+                                    <li>Company emails and attachments</li>
+                                    <li>Business strategy and analysis</li>
+                                    <li>Financial calculations and projections</li>
+                                </ul>
+                                How can I help you today?
+                            </div>
+                            <div class="message-time">Just now</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Input area -->
+                <div class="input-area">
+                    <div class="input-actions">
+                        <button class="action-btn" id="voice-btn-chat" title="Voice Input">
+                            <span class="btn-icon">🎙️</span>
+                            <span class="btn-label">Voice</span>
+                        </button>
+                        <button class="action-btn" id="upload-btn-chat" title="Upload File">
+                            <span class="btn-icon">📎</span>
+                            <span class="btn-label">Upload</span>
+                        </button>
+                    </div>
+                    <div class="input-wrapper">
+                        <textarea class="message-input" id="user-input"
+                            placeholder="Ask a question or give a command..." rows="1"></textarea>
+                        <button class="send-btn" id="send-btn">
+                            <span class="send-icon">→</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search View -->
+            <div class="view-panel search-view" id="search-view">
+                <div class="search-header">
+                    <h2>Knowledge Base Search</h2>
+                    <p>Search across all documents, emails, and attachments</p>
+                </div>
+                <div class="search-wrapper">
+                    <input type="text" class="search-input" id="search-input"
+                        placeholder="Search for documents, emails, topics...">
+                    <button class="search-btn" id="search-btn">Search</button>
+                </div>
+                <div class="search-filters">
+                    <button class="filter-chip active" data-filter="all">All</button>
+                    <button class="filter-chip" data-filter="docs">Documents</button>
+                    <button class="filter-chip" data-filter="emails">Emails</button>
+                    <button class="filter-chip" data-filter="knowledge">Knowledge Base</button>
+                </div>
+                <div class="search-results" id="search-results">
+                    <div class="results-placeholder">
+                        <div class="placeholder-icon">🔍</div>
+                        <p>Start typing to search your knowledge base</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upload View -->
+            <div class="view-panel upload-view" id="upload-view">
+                <div class="upload-header">
+                    <h2>Upload Documents</h2>
+                    <p>Add documents to your knowledge base</p>
+                </div>
+                <div class="upload-zone" id="upload-zone">
+                    <div class="upload-icon">📁</div>
+                    <p class="upload-title">Drag & Drop Files Here</p>
+                    <p class="upload-subtitle">or click to browse</p>
+                    <p class="upload-formats">Supports: PDF, Word, Excel, CSV, Images</p>
+                    <input type="file" id="file-input" multiple
+                        accept=".pdf,.doc,.docx,.txt,.csv,.xlsx,.xls,.png,.jpg,.jpeg,.gif">
+                </div>
+                <div class="upload-list" id="upload-list">
+                    <!-- Uploaded files will appear here -->
+                </div>
+            </div>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="app-footer">
+            <span class="footer-text">Powered by Veralogix</span>
+            <span class="footer-separator">•</span>
+            <span class="footer-text">100% Offline & Private</span>
+            <span class="footer-separator">•</span>
+            <span class="footer-text"><span id="knowledge-count">Loading...</span> items in knowledge base</span>
+        </footer>
+
+    </div>
+
+    <script src="scripts/shared-utils.js"></script>
+    <script src="scripts/variant-2.js"></script>
+</body>
+
+</html>
