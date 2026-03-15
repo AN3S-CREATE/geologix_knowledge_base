@@ -16,7 +16,7 @@ def _extract_refs(html_text: str):
 
 def test_ui_asset_references_exist():
     backend_root = Path(__file__).resolve().parent.parent
-    ui_root = backend_root.parent / "UI"
+    ui_root = backend_root / "src" / "geologix" / "ui"
     assert ui_root.exists(), f"UI folder not found: {ui_root}"
 
     html_files = sorted(ui_root.glob("variant-*.html"))
